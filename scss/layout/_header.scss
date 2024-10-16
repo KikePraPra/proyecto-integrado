@@ -1,0 +1,5 @@
+@use "../abstracts/vars" as vars;
+
+.bg-main{
+    background: vars.$clr-main;
+}

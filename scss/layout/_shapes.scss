@@ -1,0 +1,73 @@
+@use"../abstracts/media-queries" as mq;
+@use"../abstracts/vars" as vars;
+
+.circle-story{
+    margin-left: 19rem;
+
+    padding-bottom: 8rem;
+
+    @include mq.respond-to(mq.$phone){
+        left: 0;
+    }
+}
+
+.sword{
+    right: 12rem;
+    top: 98rem;
+}
+
+@mixin place-holder-base($n){
+    display: inline-flex;
+    gap: 1.5rem;
+    border-radius: 30px;
+    width: $n+px;
+    height: 87px;
+    color: vars.$clr-white;
+}
+
+.place-holder{
+    @include place-holder-base(1171);
+}
+
+.credentials{
+    @include place-holder-base(1351);
+    border: none;
+}
+
+.score-pts{
+    display: flex;
+    justify-content: center;
+    right: 16rem;
+    width: 136px;
+    height: 87px;
+    border-radius: 30px;
+}
+
+.skull{
+    right: 11rem;
+}
+
+.bars{
+    right: 12rem;
+    bottom: -245rem;
+}
+
+.bars2{
+    left: 12rem;
+    bottom: -270rem;
+}
+
+.bars3{
+    right: 12rem;
+    bottom: -301rem;
+}
+
+.bars4{
+    left: 12rem;
+    bottom: -312rem;
+}
+
+.play-shape{
+    left: 49rem;
+    bottom: -339rem;
+}

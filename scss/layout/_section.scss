@@ -1,0 +1,18 @@
+@use "../abstracts/vars" as vars;
+
+.text{
+    text-align: center;
+    padding: 0 5rem;
+}
+
+.bg-red{
+    background: vars.$clr-red;
+}
+
+.bg-black{
+    background: vars.$clr-black;
+}
+
+.play-img{
+    width: 100%;
+}

@@ -1,0 +1,61 @@
+@use "../abstracts/vars" as vars;
+@use "../abstracts/media-queries" as mq;
+
+.nav-list-link{
+    color: vars.$clr-white;
+    text-decoration: none;
+    font-size: vars.$fs-xsm;
+}
+
+.title-font{
+    font-family: vars.$ff-secondary;
+}
+
+.bold{
+    font-weight: vars.$fw-bold;
+}
+
+.red-text{
+    color: vars.$clr-red;
+}
+
+.main-title{
+    font-size: vars.$fs-xxmd;
+
+    @include mq.respond-to(mq.$phone){
+        font-size: vars.$fs-xxmd;
+    }
+}
+
+.pd-title{
+    margin-left: 11.875rem;
+}
+
+.description{
+    font-size: vars.$fs-sm;
+}
+
+.config-pad{
+    padding: 0 14rem;
+    @include mq.respond-to(mq.$phone){
+        padding: 0 10rem;
+    }
+}
+
+.text-center{
+    text-align: center;
+}
+
+.txt{
+    padding-left: 3rem;
+}
+
+.txt::placeholder{
+    color: vars.$clr-white;
+}
+
+.footer-title{
+    font-size: vars.$fs-xmd;
+    font-family: vars.$ff-secondary;
+}
+

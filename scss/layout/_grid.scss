@@ -1,0 +1,32 @@
+@use "../abstracts/vars" as vars;
+@use "../abstracts/media-queries" as mq;
+
+.columns-container{
+    display: grid;
+    margin: 0 11.875rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
+
+.scores-container{
+    display: flex;
+    gap: 3.6rem;
+    flex-wrap: wrap;
+}
+
+.st-item{
+    border-radius: 50%;
+    width: 12rem;
+    height: 12rem;
+    margin: auto;
+    text-align: center;
+    border: .3rem solid;
+}
+
+.st-name{
+    margin-top: -1rem;
+}
+
+.st-value{
+    margin-top: 1rem;
+}

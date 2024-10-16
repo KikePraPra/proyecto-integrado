@@ -1,0 +1,28 @@
+@use "../abstracts/vars" as vars;
+@use "../abstracts/media-queries" as mq;
+
+.bg-secondary{
+    background: vars.$clr-secondary;
+}
+
+.footer-list{
+    list-style: none;
+    line-height: 2rem;
+}
+
+.footer{
+    padding: 10rem 5rem;
+}
+
+.footer-columns{
+    display: flex;
+    justify-content: space-between;
+}
+.footer-icons{
+    display: flex;
+    gap: 1rem;
+
+    @include mq.respond-to(mq.$phone){
+        justify-content: center;
+    }
+}
