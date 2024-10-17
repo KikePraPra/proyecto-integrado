@@ -13,5 +13,6 @@ body{
 
     @include mq.respond-to(mq.$phone){
         text-align: center;
+        overflow: hidden;
     }
 }
