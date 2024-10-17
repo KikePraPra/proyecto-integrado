@@ -15,11 +15,14 @@
 }
 
 .footer-columns{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+    padding-left: 4.5rem;
 }
 .footer-icons{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
 
     @include mq.respond-to(mq.$phone){

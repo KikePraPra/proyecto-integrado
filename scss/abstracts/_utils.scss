@@ -3,6 +3,11 @@
 .grid{
     display: grid;
 }
+
+.flex{
+    display: flex;
+}
+
 .absolute{
     position: absolute;
 }
@@ -42,11 +47,6 @@
     }
 }
 
-.icon{
-    width: 2rem;
-    height: auto;
-}
-
 .mt-1{ margin-top: 1rem; }
 .mt-2{ margin-top: 2rem; }
 .mt-3{ margin-top: 3rem; }
@@ -80,6 +80,8 @@
 .pb-4{padding-bottom: 4rem; }
 .pb-5{padding-bottom: 5rem; }
 .pb-10{padding-bottom: 10rem; }
+
+.pl-4{padding-left: 4rem;}
 
 .mobile-img{
     @include mq.respond-to(mq.$phone){

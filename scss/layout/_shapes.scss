@@ -71,3 +71,20 @@
     left: 49rem;
     bottom: -339rem;
 }
+
+.icon-holder{
+    display: flex;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background-color: vars.$clr-white;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    justify-self: center;
+    align-self: center;
+    width: 60px;
+    height: 60px;
+}
