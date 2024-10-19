@@ -19,6 +19,11 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
     padding-left: 4.5rem;
+
+    @include mq.respond-to(mq.$phone){
+        gap: 0;
+        padding-left: 1rem;
+    }
 }
 .footer-icons{
     display: grid;
@@ -26,6 +31,9 @@
     gap: 1rem;
 
     @include mq.respond-to(mq.$phone){
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+        
     }
 }

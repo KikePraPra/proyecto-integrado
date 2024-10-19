@@ -14,9 +14,12 @@
   <meta property="og:image" content="">
   <meta property="og:image:alt" content="">
 
+
+  <!-- favicon 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
+  -->
 
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
@@ -32,20 +35,20 @@
 <body>
 
   <header>
-    <nav class="top-nav">
-      <a class="main-logo" href="#">
+    <nav id="nav" class="top-nav">
+      <a class="main-logo" href="#nav">
         <img src="./img/logo.png" alt="logo">
         <h1 class="main-title bold title-font nav-list-link">Gehenna</h1>
       </a>
       <ul class="nav-list">
-        <li><a class="nav-list-link" href="#">Home</a></li>
+        <li><a class="nav-list-link" href="#nav">Home</a></li>
         <li><a class="nav-list-link" href="#">Sign up</a></li>
         
-        <li><a class="nav-list-link" href="#">Controls</a></li>
-        <li><a class="nav-list-link" href="#">Play</a></li>
+        <li><a class="nav-list-link" href="#section-controls">Controls</a></li>
+        <li><a class="nav-list-link" href="#section-play">Play</a></li>
         
         
-        <li><a class="nav-list-link" href="#">Credits</a></li>
+        <li><a class="nav-list-link" href="#section-credits">Credits</a></li>
       </ul>
     </nav>
   </header>
@@ -80,7 +83,7 @@
         Fermentum est pharetra mauris aliquam. Sagittis quis id donec arcu aliquam nulla nisi consectetur augue. Rhoncus odio viverra ornare elit elit malesuada nibh id. At in sed a ultrices ante urna. Euismod potenti aliquam dictumst sapien ultrices. Viverra sollicitudin accumsan ullamcorper dui pellentesque faucibus sagittis ultrices. Consectetur sed mus dictum nec sit. Sit urna duis proin ut in condimentum eget. Sagittis consequat elementum phasellus vitae cursus. Et velit sed adipiscing id sed ac pellentesque eget.</p>
         
         <img class="circle-story mobile-img" src="img/black-circle.png" alt="black circle">
-        <img class="absolute sword mobile-img" src="img/espada-web.png" alt="sword">
+        <img class="absolute sword larger-img" src="img/espada-web.png" alt="sword">
       </article>
 
   </section>
@@ -159,16 +162,16 @@
   <!-- controls -->
   <section class="pt-7 pb-5">
     
-    <h2 class="title-font bold main-title pd-title mb-5">Controls</h2>
+    <h2 id="section-controls" class="title-font bold main-title pd-title mb-5">Controls</h2>
 
     <article class="columns-container">
       <img class="mobile-img" src="img/wasd.png" alt="w a s d keys">
 
-      <p class="title-font bold main-title pt-5">You can move using W A S D...</p>
+      <p class="title-font bold main-title pt-5 mb-pt">You can move using W A S D...</p>
     </article>
 
     <article class="columns-container">
-      <p class="title-font bold main-title pt-10 red-text">...And attack using the spacebar</p>
+      <p class="title-font bold main-title mb-pt pt-10 red-text">...And attack using the spacebar</p>
 
       <img class="pt-5 mobile-img" src="img/spacebar.png" alt="spacebar">
     </article>
@@ -193,7 +196,7 @@
   <!-- credits -->
   <section class="pt-7 pb-10">
 
-    <h2 class="title-font bold main-title pd-title mb-3">Credits</h2>
+    <h2 id="section-credits" class="title-font bold main-title pd-title mb-3">Credits</h2>
 
     <article class="columns-container pb-5">
       <p class="description">Lorem ipsum dolor sit amet consectetur. Dictum nec praesent lectus mattis nisi. Scelerisque at amet egestas adipiscing a est vitae. Fames aliquet quis mauris rutrum pretium etiam. Erat rhoncus elementum volutpat donec commodo sit tempor aliquet. Volutpat venenatis consequat et velit vitae mattis. Cursus id nisi quisque bibendum.</p>
@@ -204,7 +207,7 @@
     </article>
 
     <article class="columns-container pt-4 pb-5">
-      <img class="absolute hidden bars2 mobile-img" src="img/barras2.png" alt="">
+      <img class="absolute hidden bars2" src="img/barras2.png" alt="">
       <img class="relative pt-3 mobile-img" src="img/assets-web2.png" alt="">
 
       <p class="description pt-4">Lorem ipsum dolor sit amet consectetur. Dictum nec praesent lectus mattis nisi. Scelerisque at amet egestas adipiscing a est vitae. Fames aliquet quis mauris rutrum pretium etiam. Erat rhoncus elementum volutpat donec commodo sit tempor aliquet.</p>
@@ -221,11 +224,11 @@
   </section>
   
   <!-- play -->
-  <section class="pt-10 mt-5 pb-10">
+  <section id="section-play" class="pt-10 mt-5 pb-10">
 
     <div class="justify-center">
       <img class="play-img mobile-img" src="img/assets-web5.png" alt="">
-      <input id="play" class="play absolute play-shape title-font bold main-title bg-secondary ml-5" type="submit" value="Play">
+      <a class="play absolute play-shape title-font bold main-title bg-secondary ml-5 justify-center align-center" href="play.html">Play</a>
 
     </div>
 
@@ -238,11 +241,11 @@
 
       <article class="footer-icons align-center justify-center">
 
-        <div class="icon-holder mobile-img"><img class="icon mobile-img" src="img/facebook-f-brands-solid.svg" alt=""></div>
-        <div class="icon-holder mobile-img"><img class="icon mobile-img" src="img/x-twitter-brands-solid.svg" alt=""></div>
-        <div class="icon-holder mobile-img"><img class="icon mobile-img" src="img/logo.svg" alt=""></div>
-        <div class="icon-holder mobile-img"><img class="icon mobile-img" src="img/steam-brands-solid.svg" alt=""></div>
-        <div class="icon-holder mobile-img"><img class="icon mobile-img" src="img/instagram-brands-solid.svg" alt=""></div>
+        <div class="icon-holder"><img class="icon" src="img/facebook-f-brands-solid.svg" alt=""></div>
+        <div class="icon-holder"><img class="icon" src="img/x-twitter-brands-solid.svg" alt=""></div>
+        <div class="icon-holder"><img class="icon" src="img/logo.svg" alt=""></div>
+        <div class="icon-holder"><img class="icon" src="img/steam-brands-solid.svg" alt=""></div>
+        <div class="icon-holder"><img class="icon" src="img/instagram-brands-solid.svg" alt=""></div>
 
       </article>
       

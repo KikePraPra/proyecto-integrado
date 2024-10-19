@@ -7,13 +7,19 @@
     padding-bottom: 8rem;
 
     @include mq.respond-to(mq.$phone){
-        left: 0;
+        margin: auto;
+        padding-top: 1rem;
     }
 }
 
 .sword{
     right: 12rem;
     top: 98rem;
+
+    @include mq.respond-to(mq.$phone){
+        right: 5rem;
+        top: 128rem;
+    }
 }
 
 @mixin place-holder-base($n){
@@ -45,31 +51,63 @@
 
 .skull{
     right: 11rem;
+
+    @include mq.respond-to(mq.$phone){
+        right: 2rem;
+        top: 232rem;
+    }
 }
 
 .bars{
     right: 12rem;
     bottom: -245rem;
+
+    @include mq.respond-to(mq.$phone){
+        right: 3rem;
+        top: 298rem;
+    }
 }
 
 .bars2{
     left: 12rem;
     bottom: -270rem;
+
+    @include mq.respond-to(mq.$phone){
+        width: 12%;
+        height: 40%;
+        top: 303rem;
+        left: 5rem;
+    }
 }
 
 .bars3{
     right: 12rem;
     bottom: -301rem;
+
+    @include mq.respond-to(mq.$phone){
+        right: 2rem;
+        top: 361rem;
+    }
 }
 
 .bars4{
     left: 12rem;
     bottom: -312rem;
+
+    @include mq.respond-to(mq.$phone){
+        left: 4rem;
+        top: 339rem;
+    }
 }
 
 .play-shape{
     left: 49rem;
     bottom: -339rem;
+
+    @include mq.respond-to(mq.$phone){
+        left: 4rem;
+        top: 378rem;
+    }
 }
 
 .icon-holder{
@@ -80,6 +118,11 @@
     background-color: vars.$clr-white;
     justify-content: center;
     align-items: center;
+
+    @include mq.respond-to(mq.$phone){
+        width: 37px;
+        height: 37px;
+    }
 }
 
 .icon{
@@ -87,4 +130,9 @@
     align-self: center;
     width: 60px;
     height: 60px;
+
+    @include mq.respond-to(mq.$phone){
+        width: 30px;
+        height: 30px;
+    }
 }

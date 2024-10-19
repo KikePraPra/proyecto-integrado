@@ -7,7 +7,7 @@
     background-color: vars.$clr-secondary;
 
     @include mq.respond-to(mq.$phone){
-        display: none;
+        
     }
 }
 
@@ -24,4 +24,8 @@
     align-items: center;
     list-style: none;
     gap: 2rem;
+
+    @include mq.respond-to(mq.$phone){
+        display: none;
+    }
 }

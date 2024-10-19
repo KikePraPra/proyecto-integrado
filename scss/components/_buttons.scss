@@ -1,5 +1,6 @@
 @use "../abstracts/vars" as vars;
 @use "../layout/shapes" as shapes;
+@use "../abstracts/media-queries" as mq;
 
 .btn{
     background: vars.$clr-white;
@@ -31,4 +32,10 @@
     height: 87px;
     color: vars.$clr-white;
     border: none;
+    text-decoration: none;
+    
+    @include mq.respond-to(mq.$phone){
+        width: 100px;
+        height: 45px;
+    }
 }

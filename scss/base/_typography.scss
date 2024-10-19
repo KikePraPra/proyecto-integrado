@@ -23,16 +23,27 @@
     font-size: vars.$fs-xxmd;
 
     @include mq.respond-to(mq.$phone){
-        font-size: vars.$fs-xxmd;
+        font-size: vars.$fs-md;
+        margin-bottom: 2rem;
     }
 }
 
 .pd-title{
     margin-left: 11.875rem;
+
+    @include mq.respond-to(mq.$phone){
+        margin: auto;
+        padding-bottom: 1rem;
+    }
 }
 
 .description{
     font-size: vars.$fs-sm;
+
+    @include mq.respond-to(mq.$phone){
+        font-size: vars.$fs-xsm;
+        margin-bottom: 4rem;
+    }
 }
 
 .config-pad{

@@ -8,9 +8,12 @@
     gap: 1.25rem;
 
     @include mq.respond-to(mq.$phone){
-        display: grid;
-        grid-template-rows: repeat(auto-fit, minmax(220px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1rem 2rem;
     }
+
+ 
 }
 
 .scores-container{
