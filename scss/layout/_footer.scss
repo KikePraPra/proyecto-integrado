@@ -1,39 +1,29 @@
 @use "../abstracts/vars" as vars;
 @use "../abstracts/media-queries" as mq;
 
-.bg-secondary{
-    background: vars.$clr-secondary;
+.bg-secondary {
+  background: vars.$clr-secondary;
 }
 
-.footer-list{
-    list-style: none;
-    line-height: 2rem;
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  padding-left: 4.5rem;
+
+  @include mq.respond-to(mq.$phone) {
+    gap: 0;
+    padding-left: 1rem;
+  }
 }
+.footer-icons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
 
-.footer{
-    padding: 10rem 5rem;
-}
-
-.footer-columns{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5rem;
-    padding-left: 4.5rem;
-
-    @include mq.respond-to(mq.$phone){
-        gap: 0;
-        padding-left: 1rem;
-    }
-}
-.footer-icons{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-
-    @include mq.respond-to(mq.$phone){
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        
-    }
+  @include mq.respond-to(mq.$phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

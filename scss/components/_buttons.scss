@@ -2,40 +2,51 @@
 @use "../layout/shapes" as shapes;
 @use "../abstracts/media-queries" as mq;
 
-.btn{
-    background: vars.$clr-white;
-    color: vars.$clr-secondary;
-    text-decoration: none;
-    border-radius: 2.5rem;
-    padding: 1rem 3rem;
-    font-weight: vars.$fw-bold;
-    font-size: vars.$fs-md;
+.submit {
+  @include shapes.place-holder-base(1351);
+  border: none;
 }
 
-.btn{
-    display: inline-flex;
-    gap: 1.5rem;
-    width: 1171px;
-    height: 87px;
-    border-radius: 30px;
+.play {
+  display: flex;
+  border-radius: 30px;
+  width: 172px;
+  height: 87px;
+  color: vars.$clr-white;
+  border: none;
+  text-decoration: none;
+
+  @include mq.respond-to(mq.$phone) {
+    width: 100px;
+    height: 45px;
+  }
 }
 
-.submit{
-    @include shapes.place-holder-base(1351);
-    border: none;
+.play:hover {
+  background: vars.$clr-black;
+  color: vars.$clr-red;
 }
 
-.play{
-    display: flex;
-    border-radius: 30px;
-    width: 172px;
-    height: 87px;
-    color: vars.$clr-white;
-    border: none;
-    text-decoration: none;
+.open-menu{
+  display: none;
+
+  @include mq.respond-to(mq.$phone) {
+    display: block;
+    margin-left: 7.1rem;
+    width: 20px;
     
-    @include mq.respond-to(mq.$phone){
-        width: 100px;
-        height: 45px;
-    }
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.close-menu{
+  display: none;
+
+  @include mq.respond-to(mq.$phone) {
+    display: block;
+    width: 15px;
+    background-color: transparent;
+    border: none;
+  }
 }

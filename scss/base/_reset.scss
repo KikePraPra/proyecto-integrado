@@ -1,17 +1,17 @@
 @use "../abstracts/vars" as vars;
 @use "../abstracts/media-queries" as mq;
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    background: vars.$clr-main;
-    font-family: vars.$ff-main;
-    color: vars.$clr-white;
+body {
+  background: vars.$clr-main;
+  font-family: vars.$ff-main;
+  color: vars.$clr-white;
 
-    @include mq.respond-to(mq.$phone){
-        text-align: center;
-    }
+  @include mq.respond-to(mq.$phone) {
+    text-align: center;
+  }
 }

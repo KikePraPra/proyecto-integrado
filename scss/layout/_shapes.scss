@@ -1,138 +1,152 @@
-@use"../abstracts/media-queries" as mq;
-@use"../abstracts/vars" as vars;
+@use "../abstracts/media-queries" as mq;
+@use "../abstracts/vars" as vars;
 
-.circle-story{
-    margin-left: 19rem;
+.circle-story {
+  margin-left: 19rem;
 
-    padding-bottom: 8rem;
+  padding-bottom: 8rem;
 
-    @include mq.respond-to(mq.$phone){
-        margin: auto;
-        padding-top: 1rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    margin: auto;
+    padding-top: 1rem;
+  }
 }
 
-.sword{
-    right: 12rem;
-    top: 98rem;
+.sword {
+  right: 12rem;
+  top: 98rem;
 
-    @include mq.respond-to(mq.$phone){
-        right: 5rem;
-        top: 128rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    right: 5rem;
+    top: 128rem;
+  }
 }
 
-@mixin place-holder-base($n){
-    display: inline-flex;
-    gap: 1.5rem;
-    border-radius: 30px;
-    width: $n+px;
-    height: 87px;
-    color: vars.$clr-white;
+@mixin place-holder-base($n) {
+  display: inline-flex;
+  gap: 1.5rem;
+  border-radius: 30px;
+  width: $n + px;
+  height: 87px;
+  color: vars.$clr-white;
 }
 
-.place-holder{
-    @include place-holder-base(1171);
+.place-holder {
+  @include place-holder-base(1171);
 }
 
-.credentials{
-    @include place-holder-base(1351);
-    border: none;
+.credentials {
+  @include place-holder-base(1351);
+  border: none;
 }
 
-.score-pts{
-    display: flex;
-    justify-content: center;
-    right: 16rem;
-    width: 136px;
-    height: 87px;
-    border-radius: 30px;
+.score-pts {
+  display: flex;
+  justify-content: center;
+  right: 16rem;
+  width: 136px;
+  height: 87px;
+  border-radius: 30px;
 }
 
-.skull{
-    right: 11rem;
+.skull {
+  right: 11rem;
 
-    @include mq.respond-to(mq.$phone){
-        right: 2rem;
-        top: 232rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    right: 2rem;
+    top: 232rem;
+  }
 }
 
-.bars{
-    right: 12rem;
-    bottom: -245rem;
+.bars {
+  right: 12rem;
+  bottom: -245rem;
 
-    @include mq.respond-to(mq.$phone){
-        right: 3rem;
-        top: 298rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    right: 3rem;
+    top: 298rem;
+  }
 }
 
-.bars2{
-    left: 12rem;
-    bottom: -270rem;
+.bars2 {
+  left: 12rem;
+  bottom: -270rem;
 
-    @include mq.respond-to(mq.$phone){
-        width: 12%;
-        height: 40%;
-        top: 303rem;
-        left: 5rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    width: 12%;
+    height: 40%;
+    top: 303rem;
+    left: 5rem;
+  }
 }
 
-.bars3{
-    right: 12rem;
-    bottom: -301rem;
+.bars3 {
+  right: 12rem;
+  bottom: -301rem;
 
-    @include mq.respond-to(mq.$phone){
-        right: 2rem;
-        top: 361rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    right: 2rem;
+    top: 361rem;
+  }
 }
 
-.bars4{
-    left: 12rem;
-    bottom: -312rem;
+.bars4 {
+  left: 12rem;
+  bottom: -312rem;
 
-    @include mq.respond-to(mq.$phone){
-        left: 4rem;
-        top: 339rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    left: 4rem;
+    top: 339rem;
+  }
 }
 
-.play-shape{
-    left: 49rem;
-    bottom: -339rem;
+.play-shape {
+  left: 52rem;
+  bottom: -339rem;
 
-    @include mq.respond-to(mq.$phone){
-        left: 4rem;
-        top: 378rem;
-    }
+  @include mq.respond-to(mq.$phone) {
+    left: 4rem;
+    top: 378rem;
+  }
 }
 
-.icon-holder{
-    display: flex;
-    width: 74px;
-    height: 74px;
-    border-radius: 50%;
-    background-color: vars.$clr-white;
-    justify-content: center;
-    align-items: center;
+.icon-holder {
+  display: flex;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: vars.$clr-white;
+  justify-content: center;
+  align-items: center;
 
-    @include mq.respond-to(mq.$phone){
-        width: 37px;
-        height: 37px;
-    }
+  @include mq.respond-to(mq.$phone) {
+    width: 37px;
+    height: 37px;
+  }
 }
 
-.icon{
-    justify-self: center;
-    align-self: center;
-    width: 60px;
-    height: 60px;
+.icon {
+  justify-self: center;
+  align-self: center;
+  width: 60px;
+  height: 60px;
 
-    @include mq.respond-to(mq.$phone){
-        width: 30px;
-        height: 30px;
-    }
+  @include mq.respond-to(mq.$phone) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.nav-list-link:hover {
+  display: inline-flex;
+  color: vars.$clr-secondary;
+  font-size: vars.$fs-sm;
+  background-color: vars.$clr-white;
+  width: 120%;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+.icon-holder:hover {
+  background-color: vars.$clr-red;
 }

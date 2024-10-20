@@ -1,72 +1,59 @@
 @use "../abstracts/vars" as vars;
 @use "../abstracts/media-queries" as mq;
 
-.nav-list-link{
-    color: vars.$clr-white;
-    text-decoration: none;
+.nav-list-link {
+  color: vars.$clr-white;
+  text-decoration: none;
+  font-size: vars.$fs-xsm;
+}
+
+.title-font {
+  font-family: vars.$ff-secondary;
+}
+
+.bold {
+  font-weight: vars.$fw-bold;
+}
+
+.red-text {
+  color: vars.$clr-red;
+}
+
+.main-title {
+  font-size: vars.$fs-xxmd;
+
+  @include mq.respond-to(mq.$phone) {
+    font-size: vars.$fs-md;
+    margin-bottom: 2rem;
+  }
+}
+
+.pd-title {
+  margin-left: 11.875rem;
+
+  @include mq.respond-to(mq.$phone) {
+    margin: auto;
+    padding-bottom: 1rem;
+  }
+}
+
+.description {
+  font-size: vars.$fs-sm;
+
+  @include mq.respond-to(mq.$phone) {
     font-size: vars.$fs-xsm;
+    margin-bottom: 4rem;
+  }
 }
 
-.title-font{
-    font-family: vars.$ff-secondary;
+.text-center {
+  text-align: center;
 }
 
-.bold{
-    font-weight: vars.$fw-bold;
+.txt {
+  padding-left: 3rem;
 }
 
-.red-text{
-    color: vars.$clr-red;
+.txt::placeholder {
+  color: vars.$clr-white;
 }
-
-.main-title{
-    font-size: vars.$fs-xxmd;
-
-    @include mq.respond-to(mq.$phone){
-        font-size: vars.$fs-md;
-        margin-bottom: 2rem;
-    }
-}
-
-.pd-title{
-    margin-left: 11.875rem;
-
-    @include mq.respond-to(mq.$phone){
-        margin: auto;
-        padding-bottom: 1rem;
-    }
-}
-
-.description{
-    font-size: vars.$fs-sm;
-
-    @include mq.respond-to(mq.$phone){
-        font-size: vars.$fs-xsm;
-        margin-bottom: 4rem;
-    }
-}
-
-.config-pad{
-    padding: 0 14rem;
-    @include mq.respond-to(mq.$phone){
-        padding: 0 10rem;
-    }
-}
-
-.text-center{
-    text-align: center;
-}
-
-.txt{
-    padding-left: 3rem;
-}
-
-.txt::placeholder{
-    color: vars.$clr-white;
-}
-
-.footer-title{
-    font-size: vars.$fs-xmd;
-    font-family: vars.$ff-secondary;
-}
-
