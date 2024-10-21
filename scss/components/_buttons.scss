@@ -19,6 +19,7 @@
   @include mq.respond-to(mq.$phone) {
     width: 100px;
     height: 45px;
+    margin: 1rem;
   }
 }
 
@@ -30,23 +31,25 @@
 .open-menu{
   display: none;
 
-  @include mq.respond-to(mq.$phone) {
+  @include mq.respond-to(mq.$tablet-portrait) {
     display: block;
     margin-left: 7.1rem;
     width: 20px;
-    
     border: none;
     background-color: transparent;
+    cursor: pointer;
   }
 }
 
 .close-menu{
   display: none;
 
-  @include mq.respond-to(mq.$phone) {
+  @include mq.respond-to(mq.$tablet-portrait) {
     display: block;
     width: 15px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    box-shadow: 0 0 0 100vmax rgb(0, 0, 0, .5);
   }
 }

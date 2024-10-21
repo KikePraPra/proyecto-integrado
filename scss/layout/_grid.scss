@@ -3,11 +3,11 @@
 
 .columns-container {
   display: grid;
-  margin: 0 11.875rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
+  margin: 0 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
 
-  @include mq.respond-to(mq.$phone) {
+  @include mq.respond-to(mq.$tablet-portrait) {
     display: flex;
     flex-wrap: wrap;
     margin: 1rem 2rem;

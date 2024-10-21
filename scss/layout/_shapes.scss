@@ -1,24 +1,13 @@
 @use "../abstracts/media-queries" as mq;
 @use "../abstracts/vars" as vars;
 
-.circle-story {
-  margin-left: 19rem;
-
-  padding-bottom: 8rem;
+.black-circle {
+  margin: auto;
+  padding-left: 2rem;
 
   @include mq.respond-to(mq.$phone) {
     margin: auto;
     padding-top: 1rem;
-  }
-}
-
-.sword {
-  right: 12rem;
-  top: 98rem;
-
-  @include mq.respond-to(mq.$phone) {
-    right: 5rem;
-    top: 128rem;
   }
 }
 
@@ -58,55 +47,39 @@
   }
 }
 
-.bars {
-  right: 12rem;
-  bottom: -245rem;
+.shape1{
+  margin: -2rem 0 -3rem 0;
 
   @include mq.respond-to(mq.$phone) {
-    right: 3rem;
-    top: 298rem;
+    margin: auto;
+  }
+}
+.shape2{
+  margin-top: -4.5rem;
+
+  @include mq.respond-to(mq.$phone) {
+    margin: auto;
+  }
+}
+.shape3{
+  margin-top: -4.5rem;
+
+  @include mq.respond-to(mq.$phone) {
+    margin: auto;
   }
 }
 
-.bars2 {
-  left: 12rem;
-  bottom: -270rem;
+.img-play{
+  height: 300px;
+  background: url(../img/assets-web5.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
 
   @include mq.respond-to(mq.$phone) {
-    width: 12%;
-    height: 40%;
-    top: 303rem;
-    left: 5rem;
-  }
-}
-
-.bars3 {
-  right: 12rem;
-  bottom: -301rem;
-
-  @include mq.respond-to(mq.$phone) {
-    right: 2rem;
-    top: 361rem;
-  }
-}
-
-.bars4 {
-  left: 12rem;
-  bottom: -312rem;
-
-  @include mq.respond-to(mq.$phone) {
-    left: 4rem;
-    top: 339rem;
-  }
-}
-
-.play-shape {
-  left: 52rem;
-  bottom: -339rem;
-
-  @include mq.respond-to(mq.$phone) {
-    left: 4rem;
-    top: 378rem;
+    display: flex;
+    align-items: center;
+    height: 75%;
   }
 }
 

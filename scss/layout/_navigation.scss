@@ -3,40 +3,47 @@
 
 .top-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   background-color: vars.$clr-secondary;
+  
 
-  @include mq.respond-to(mq.$phone) {
+  @include mq.respond-to(mq.$tablet-portrait) {
     justify-content: space-around;
-    padding-left: 1rem;
   }
 }
 
 .main-logo {
   display: flex;
-  margin-right: 70rem;
+  margin-left: 3rem;
   align-items: center;
   text-decoration: none;
   gap: 1rem;
+
+  @include mq.respond-to(mq.$tablet-portrait) {
+    margin-left: 0;
+  }
 }
 
 .nav-list {
   display: flex;
   align-items: center;
+  margin-right: 3rem;
   list-style: none;
   gap: 2rem;
+  cursor: pointer;
 
-  @include mq.respond-to(mq.$phone) {
+  @include mq.respond-to(mq.$tablet-portrait) {
     position: absolute;
     flex-direction: column;
     align-items: end;
     background-color: vars.$clr-secondary;
-    padding: 2rem;
-    left: 15.8rem;
-    top: .5rem;
+    padding: 2rem 2.15rem 76rem 1rem;
+    left: 17rem;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
+    box-shadow: 12rem 0 0 11rem vars.$clr-secondary;
+    
   }
 }
 
@@ -44,7 +51,7 @@
  "ya terminé mi menú hamburguesa, pero no me gusta que solo aparezca y desaparezca, qué puedo hacer?"
  y me dio la propiedad transition con esos mismos valores
 */
-.nav-list.visible{
+.visible{
   visibility: visible;
   opacity: 1;
 }

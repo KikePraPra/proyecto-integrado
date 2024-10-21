@@ -15,13 +15,18 @@
   </head>
   <body>
     <header>
-      <nav id="nav" class="top-nav">
+      <nav id="top" class="top-nav">
         <a class="main-logo" href="#nav">
           <img src="./img/logo.png" alt="logo" />
           <h1 class="main-title bold title-font nav-list-link">Gehenna</h1>
+
+          <button id="open" class="open-menu"><img src="img/menu.svg" alt=""></button>
         </a>
-        <ul class="nav-list">
-          <li><a class="nav-list-link" href="#nav">Home</a></li>
+
+        <ul id="nav" class="nav-list">
+          <button id="close" class="close-menu"><img src="img/close-menu.svg" alt=""></button>
+
+          <li><a class="nav-list-link" href="#top">Home</a></li>
           <li><a class="nav-list-link" href="#">Sign up</a></li>
 
           <li>
@@ -35,12 +40,13 @@
     </header>
 
     <section class="bg-secondary game">
-        <div class-="canvas-holder">
+        <div class="canvas-holder">
             <canvas class="bg-black"></canvas>
             
         </div>
 
     </section>
 
+    <script src="js/menu.js"></script>
   </body>
 </html>

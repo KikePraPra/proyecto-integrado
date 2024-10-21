@@ -19,17 +19,20 @@
   color: vars.$clr-red;
 }
 
+.white-text {
+  color: vars.$clr-white;
+}
+
 .main-title {
   font-size: vars.$fs-xxmd;
 
-  @include mq.respond-to(mq.$phone) {
+  @include mq.respond-to(mq.$tablet-portrait) {
     font-size: vars.$fs-md;
-    margin-bottom: 2rem;
   }
 }
 
 .pd-title {
-  margin-left: 11.875rem;
+  margin-left: 3rem;
 
   @include mq.respond-to(mq.$phone) {
     margin: auto;
@@ -40,10 +43,14 @@
 .description {
   font-size: vars.$fs-sm;
 
-  @include mq.respond-to(mq.$phone) {
+  @include mq.respond-to(mq.$tablet-portrait) {
     font-size: vars.$fs-xsm;
     margin-bottom: 4rem;
   }
+}
+
+.footer-text{
+  font-size: vars.$fs-xsm;
 }
 
 .text-center {

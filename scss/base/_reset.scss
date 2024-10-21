@@ -10,8 +10,15 @@ body {
   background: vars.$clr-main;
   font-family: vars.$ff-main;
   color: vars.$clr-white;
+  box-sizing: border-box;
+  width: 100%;
+  
 
   @include mq.respond-to(mq.$phone) {
     text-align: center;
   }
+}
+
+header{
+  overflow: hidden;
 }
