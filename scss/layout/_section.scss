@@ -23,21 +23,6 @@ section {
   overflow: hidden;
 }
 
-.game {
-  height: 100vh;
-}
-
-.canvas-holder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem;
-
-  @include mq.respond-to(mq.$phone) {
-    padding: 0;
-  }
-}
-
 canvas {
   display: block;
   margin: auto;

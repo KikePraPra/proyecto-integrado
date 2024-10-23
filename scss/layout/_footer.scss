@@ -7,12 +7,12 @@
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
   padding-left: 4.5rem;
 
   @include mq.respond-to(mq.$phone) {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    
     gap: 0;
     padding-left: 1rem;
   }

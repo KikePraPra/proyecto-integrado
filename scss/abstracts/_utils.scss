@@ -1,5 +1,7 @@
 @use "../abstracts/media-queries" as mq;
 
+//positions, displays y centers
+
 .absolute {
   position: absolute;
 }
@@ -31,6 +33,10 @@
     padding-left: 0;
   }
 }
+
+//positions, displays y centers
+
+//padings y margins
 
 .mt-3 {
   margin-top: 3rem;
@@ -113,6 +119,10 @@
   padding-left: 4rem;
 }
 
+//padings y margins
+
+//images
+
 .mobile-img {
   @include mq.respond-to(mq.$phone) {
     width: 75%;
@@ -130,16 +140,4 @@
   }
 }
 
-.mobile-mb {
-  @include mq.respond-to(mq.$phone) {
-    margin-bottom: 18rem;
-  }
-}
-
-.z-index {
-  z-index: 1;
-}
-
-.z-index-2 {
-  z-index: 2;
-}
+//images
