@@ -1,0 +1,47 @@
+{
+    "player": {
+       "x": 450,
+       "y": 100,
+       "key": "player",
+       "frame": 2
+    },
+    "powerUp": {
+       "x": 1300,
+       "y": 550,
+       "key": "power-up"
+    },
+    "enemies": [
+       {
+          "x": 70,
+          "y": 250,
+          "key": "enemy1"
+       },
+       {
+          "x": 1200,
+          "y": 200,
+          "key": "enemy1"
+       }
+    ],
+    "platforms": [
+       {
+          "x": 0,
+          "y": 450,
+          "key": "ground1"
+       },
+       {
+          "x": 730,
+          "y": 400,
+          "key": "platform"
+       },
+       {
+          "x": 1800,
+          "y": 400,
+          "key": "platform"
+       },
+       {
+          "x": 1100,
+          "y": 400,
+          "key": "ground2"
+       }
+    ]
+  }
