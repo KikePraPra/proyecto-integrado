@@ -1,17 +1,16 @@
 let gameScene = new Phaser.Scene("Game");
 
-  
-
 gameScene.preload = function() {
 
   this.playerSpeed = 400;
   this.playerJump = -500;
+  this.enemy1Speed = 150;
+
     //se cargan las imagenes
     this.load.image('background', 'img/assets/fondo-juego.png');
     this.load.image('ground1', 'img/assets/ground1.png');
     this.load.image('ground2', 'img/assets/ground2.png');
     this.load.image('platform', 'img/assets/platform.png');
-    this.load.image('enemy1', 'img/assets/enemigo1.png');
     this.load.image('power-up', 'img/assets/power-up.png');
 
     //se cargan los spritesheets
@@ -20,6 +19,14 @@ gameScene.preload = function() {
         frameHeight: 156,
         margin: 4,
         spacing: -18.5
+      });
+
+    this.load.spritesheet('enemy1', './img/assets/enemigo1-spritesheet.png', {
+        frameWidth: 58,
+        frameHeight: 160,
+        margin: 0,
+        spacing: 2
+
       });
 
     //cargar json
@@ -32,6 +39,14 @@ gameScene.create = function() {
     key: 'walk',
     frames: this.anims.generateFrameNumbers('player', {start: 0, end: 4}),
     frameRate: 8,
+    yoyo: true,
+    repeat: -1
+});
+
+  this.anims.create({
+    key: 'enemy-walk',
+    frames: this.anims.generateFrameNumbers('enemy1', {start: 0, end: 4}),
+    frameRate: 5,
     yoyo: true,
     repeat: -1
 });
@@ -87,15 +102,29 @@ gameScene.setuplevel = function() {
         this.enemies.add(enemy);
         
     });
-    
+
+    //powerUp
+    this.powerUp = this.add.sprite(this.levelData.powerUp.x, this.levelData.powerUp.y, 'power-up'); //y-550
+    this.physics.add.existing(this.powerUp);
+    this.powerUp.body.allowGravity = false;
+    this.physics.add.overlap(this.player, this.powerUp, this.getPowerUp, null, this);
+
+    //cameras
+    this.cameras.main.setBounds(0, 0, 2400, 700);
+    this.cameras.main.startFollow(this.player, true, 0.5, 0.5); 
 }
 
 gameScene.update = function(){
   this.movement();
+  this.enemyMovement();
   
   if(this.player.y > 1000){
-    this.scene.restart();
+    this.restartGame();
   }
+}
+
+gameScene.getPowerUp = function(){
+  this.powerUp.destroy();
 }
 
 
@@ -129,10 +158,25 @@ gameScene.movement = function(){
 };
 
 gameScene.restartGame = function(){
-  this.scene.restart();
+  this.cameras.main.fade(1000);
+
+  //when fade is completed, restart game
+  this.cameras.main.on('camerafadeoutcomplete', function (camera, effect) {
+    //restart game 
+    this.scene.restart();
+  }, this)
 }
 
-gameScene.enemyMovement = function(){}
+gameScene.enemyMovement = function(){
+  this.enemies.children.iterate(function(child){ //gran parte de este método lo generó codeium 🥵
+    child.body.setVelocityX(150);
+    child.flipX = true;
+    if(!child.anims.isPlaying){
+      child.anims.play('enemy-walk');
+    }
+    child.allowGravity = false;
+  })
+}
 
 //configuración de la escena
 let config = {
