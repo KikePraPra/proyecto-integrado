@@ -1,12 +1,33 @@
-let gameScene = new Phaser.Scene("Game");
+import Level2 from './Level2.js';
 
 let powerUp = false;
 
-gameScene.preload = function() {
+export default class Level1 extends Phaser.Scene {
+    constructor() {
+        super({key: "Level1", active: true});
+    }
+    preload() {
+        this.loadImages();
+    }
+    create() {
+        this.createThings();
+        this.player.anims.play('jump');
+    }
+    update() {
+        this.movement();
+        this.enemyMovement();
+        
+        if(this.player.y > 1000){
+            this.restartGame();
+  }
+    }
 
-  this.playerSpeed = 400;
-  this.playerJump = -500;
-  this.enemy1Speed = 150;
+    
+    loadImages() {
+        
+    this.playerSpeed = 400;
+    this.playerJump = -500;
+    this.enemy1Speed = 150;
 
 
     //se cargan las imagenes
@@ -20,11 +41,10 @@ gameScene.preload = function() {
 
     //cargar json
     this.load.json('levelData', './data/levelData.json');
-}
+    }
 
-gameScene.create = function() {
-
-  this.createAnimations();
+    createThings() {
+    this.createAnimations();
     
     //fondo
     let bg = this.add.sprite(0,0, 'background1');
@@ -38,46 +58,44 @@ gameScene.create = function() {
 
     this.physics.add.overlap(this.player, this.powerUp, this.getPowerUp, null, this);
 
+    this.physics.add.overlap(this.player, this.goal, this.getGoal, null, this);
+
     //teclas
     this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.hit = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-}
-
-gameScene.update = function(){
-    this.movement();
-    this.enemyMovement();
-    
-    if(this.player.y > 1000){
-      this.restartGame();
     }
-  }
 
-gameScene.enemyCollision = function(){
-  if(this.player.anims.getName() === 'idle-sword'){
-    this.enemies.children.iterate(function(enemigo) {
-      enemigo.setTint(0xff00ff);
-      if(enemigo.x < gameScene.player.x){
-        enemigo.x -= 40;
-      }
-      if(enemigo.x > gameScene.player.x){
-        enemigo.x += 40;
-      }
-    })
-    
-  }
-}
+    enemyCollision(){
+        const scene = this; //esto fue puro copilot, para que te voy a mentir, el resto del método lo generó codeium
+        if(this.player.anims.getName() === 'idle-sword'){ //El prompt fue únicamente decirle que el método no servía y que si lo podía arreglar
+            this.enemies.children.iterate(function(enemigo) {
+              enemigo.setTint(0xff00ff);
+              if(enemigo.x < scene.player.x){
+                enemigo.x -= 40;
+              }
+              if(enemigo.x > scene.player.x){
+                enemigo.x += 40;
+              }
+            })
+          }
+    }
 
-gameScene.getPowerUp = function(){
-  this.powerUp.destroy();
-  this.goal.destroy();
-  powerUp = true;
-}
+    getPowerUp(){
+        this.powerUp.destroy();
+        powerUp = true;
+    }
 
+    getGoal(){
+        this.cameras.main.fade(1000);
+        powerUp = false;
+        this.scene.add('Level2', new Level2);
+        this.scene.start('Level2');
+    }
 
-gameScene.movement = function(){
-  let onGround = this.player.body.onFloor();
+    movement(){
+        let onGround = this.player.body.onFloor();
   
   if(this.right.isDown){
     this.player.body.setVelocityX(this.playerSpeed);
@@ -131,10 +149,10 @@ gameScene.movement = function(){
   if(this.hit.isDown){
     this.player.anims.play('jump');
   }
-};
+    }
 
-gameScene.enemyMovement = function() {
-  const scene = this; // Guardar la referencia al contexto de la escena
+    enemyMovement(){
+        const scene = this; // Guardar la referencia al contexto de la escena
   
   this.enemies.children.iterate(function(child) {
       child.body.allowGravity = false;
@@ -152,11 +170,10 @@ gameScene.enemyMovement = function() {
           child.anims.play('enemy1-walk');
       }
   });
-}
+    }
 
-gameScene.setuplevel = function() {
-
-  //fondo
+    setuplevel(){
+         //fondo
   this.levelData = this.cache.json.get('levelData');
   //crear plataformas
   this.platforms = this.physics.add.staticGroup();
@@ -203,11 +220,10 @@ gameScene.setuplevel = function() {
   //cameras
   this.cameras.main.setBounds(0, 0, 2400, 700);
   this.cameras.main.startFollow(this.player, true, 0.5, 0.5); 
-}
+    }
 
-gameScene.loadSpritesheets = function() {
-
-  //se cargan los spritesheets
+    loadSpritesheets(){
+          //se cargan los spritesheets
   this.load.spritesheet('player', './img/assets/walk-principal-spritesheet.png', {
     frameWidth: 70,
     frameHeight: 140,
@@ -271,95 +287,78 @@ this.load.spritesheet('power-up', './img/assets/power-up-spritesheet.png', {
     margin: 0,
     spacing: 0
   });
+    }
+
+    createAnimations(){
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('idle', {start: 0, end: 4}),
+            frameRate: 8,
+            repeat: -1
+          });
+        
+          this.anims.create({
+            key: 'idle-sword',
+            frames: this.anims.generateFrameNumbers('idle-sword', {start: 0, end: 4}),
+            frameRate: 8,
+            repeat: -1
+          });
+        
+          this.anims.create({
+            key: 'walk',
+            frames: this.anims.generateFrameNumbers('player', {start: 0, end: 4}),
+            frameRate: 8,
+            yoyo: true,
+            repeat: -1
+        });
+        
+          this.anims.create({
+            key: 'walk-sword',
+            frames: this.anims.generateFrameNumbers('player-sword', {start: 0, end: 4}),
+            frameRate: 8,
+            yoyo: true,
+            repeat: -1
+        });
+        
+          this.anims.create({
+            key: 'jump',
+            frames: this.anims.generateFrameNumbers('jump', {start: 0, end: 5}),
+            frameRate: 8,
+            repeat: 0
+        });
+        
+          this.anims.create({
+            key: 'jump-sword',
+            frames: this.anims.generateFrameNumbers('jump-sword', {start: 0, end: 5}),
+            frameRate: 8,
+            repeat: 0
+        });
+        
+          this.anims.create({
+            key: 'enemy1-walk',
+            frames: this.anims.generateFrameNumbers('enemy1', {start: 0, end: 4}),
+            frameRate: 5,
+            yoyo: true,
+            repeat: -1
+        });
+        
+        this.anims.create({
+          key: 'power-up',
+          frames: this.anims.generateFrameNumbers('power-up', {start: 0, end: 4}),
+          frameRate: 8,
+          repeat: -1
+        });
+    }
+
+    restartGame(){
+        this.cameras.main.fade(1000);
+        powerUp = false;
+
+        //when fade is completed, restart game
+        this.cameras.main.on('camerafadeoutcomplete', function (camera, effect) {
+            //restart game 
+            this.scene.restart();
+        }, this)
+            }
+
 }
-
-gameScene.createAnimations = function() {
-
-  this.anims.create({
-    key: 'idle',
-    frames: this.anims.generateFrameNumbers('idle', {start: 0, end: 4}),
-    frameRate: 8,
-    repeat: -1
-  });
-
-  this.anims.create({
-    key: 'idle-sword',
-    frames: this.anims.generateFrameNumbers('idle-sword', {start: 0, end: 4}),
-    frameRate: 8,
-    repeat: -1
-  });
-
-  this.anims.create({
-    key: 'walk',
-    frames: this.anims.generateFrameNumbers('player', {start: 0, end: 4}),
-    frameRate: 8,
-    yoyo: true,
-    repeat: -1
-});
-
-  this.anims.create({
-    key: 'walk-sword',
-    frames: this.anims.generateFrameNumbers('player-sword', {start: 0, end: 4}),
-    frameRate: 8,
-    yoyo: true,
-    repeat: -1
-});
-
-  this.anims.create({
-    key: 'jump',
-    frames: this.anims.generateFrameNumbers('jump', {start: 0, end: 5}),
-    frameRate: 8,
-    repeat: 0
-});
-
-  this.anims.create({
-    key: 'jump-sword',
-    frames: this.anims.generateFrameNumbers('jump-sword', {start: 0, end: 5}),
-    frameRate: 8,
-    repeat: 0
-});
-
-  this.anims.create({
-    key: 'enemy1-walk',
-    frames: this.anims.generateFrameNumbers('enemy1', {start: 0, end: 4}),
-    frameRate: 5,
-    yoyo: true,
-    repeat: -1
-});
-
-this.anims.create({
-  key: 'power-up',
-  frames: this.anims.generateFrameNumbers('power-up', {start: 0, end: 4}),
-  frameRate: 8,
-  repeat: -1
-});
-}
-
-gameScene.restartGame = function(){
-  this.cameras.main.fade(1000);
-  powerUp = false;
-
-  //when fade is completed, restart game
-  this.cameras.main.on('camerafadeoutcomplete', function (camera, effect) {
-    //restart game 
-    this.scene.restart();
-  }, this)
-}
-
-//configuración de la escena
-let config = {
-    type: Phaser.CANVAS,
-    width: window.innerWidth,
-    height: window.innerHeight,
-    scene: gameScene,
-    title: "Gehenna",
-    physics: {
-      default: "arcade",
-      arcade: {
-        gravity: { y: 900 },
-        debug: true,
-      },
-    },
-  };
-
-  let game = new Phaser.Game(config);
