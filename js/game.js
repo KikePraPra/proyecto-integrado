@@ -8,6 +8,7 @@ const config = {
   width: window.innerWidth,
   height: window.innerHeight,
   scene: Level1,
+  pixelArt: true,
   title: "Gehenna",
   physics: {
     default: "arcade",
