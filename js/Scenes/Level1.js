@@ -134,6 +134,10 @@ export default class Level1 extends Phaser.Scene {
 
   setuplevel() {
 
+    if(window.innerWidth < 1000){
+      this.cameras.main.zoom = 0.6;
+    }
+
     //crear plataformas
     this.platforms = this.physics.add.staticGroup();
     this.levelData.platforms.forEach((item) => {
