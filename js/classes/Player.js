@@ -6,6 +6,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     scene.add.existing(this);
     scene.physics.add.existing(this);
     this.player = this;
+
+    this.player.body.setCollideWorldBounds(true);
+    if (!this.player.anims.isPlaying) {
+      this.player.anims.play('jump');
+    }
   }
 
   update(keys) {

@@ -1,3 +1,4 @@
+import Enemy from '../classes/Enemy.js';
 import Player from '../classes/Player.js';
 import Level2 from './Level2.js';
 
@@ -13,6 +14,14 @@ export default class Level1 extends Phaser.Scene {
     this.levelData = this.cache.json.get('levelData');
     this.player = new Player(this, this.levelData.player.x, this.levelData.player.y, 'player');
     this.player.depth = 2;
+
+    this.enemies = this.physics.add.group();
+    this.levelData.enemies.forEach((item) => {
+      let enemy;
+      enemy = new Enemy(this, item.x, item.y, item.key);
+      enemy.depth = 2;
+      this.enemies.add(enemy);
+    });
     this.createThings();
   }
 
@@ -20,11 +29,17 @@ export default class Level1 extends Phaser.Scene {
     // let onGround = this.player.body.onFloor();
     this.player.update(this.keys);
     
-    this.enemyMovement();
+    // this.enemyMovement();
 
     if (this.player.y > 1000) {
       this.restartGame();
     }
+
+    this.enemies.children.iterate(function (enemy) {
+      if(enemy){
+        enemy.update();
+      }
+    });
   }
 
 
@@ -53,12 +68,7 @@ export default class Level1 extends Phaser.Scene {
 
     this.createAnimations();
 
-        // this.player = this.add.sprite(this.levelData.player.x, this.levelData.player.y, 'player', 3);
-        // this.physics.add.existing(this.player);
-
-        // this.player.body.setCollideWorldBounds(true);
-
-        // this.physics.world.setBoundsCollision(true, false, false, false);
+    this.physics.world.setBoundsCollision(true, false, false, false);
 
     //fondo
     let bg = this.add.sprite(0, 0, 'background1');
@@ -68,34 +78,25 @@ export default class Level1 extends Phaser.Scene {
 
     this.physics.add.collider([this.player, this.enemies], this.platforms);
 
-    this.physics.add.overlap(this.player, this.enemies, this.enemyCollision, null, this);
+    this.physics.add.collider(this.player, this.enemies, this.enemyCollision, null, this);
 
     this.physics.add.overlap(this.player, this.powerUp, this.getPowerUp, null, this);
 
     this.physics.add.overlap(this.player, this.goal, this.getGoal, null, this);
   }
 
-  movementKeys() {
-      //teclas
-    this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    this.hit = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-  }
-
-  enemyCollision() {
-    const scene = this; //esto fue puro copilot, para que te voy a mentir, el resto del método lo generó codeium
-    if (this.player.anims.getName() === 'idle-sword') { //El prompt fue únicamente decirle que el método no servía y que si lo podía arreglar
-      this.enemies.children.iterate(function (enemigo) {
-        if (enemigo.x < scene.player.x) {
-          enemigo.x -= 40;
+  enemyCollision(player, enemy) {
+        if (player.anims.getName() === 'jump'){
+            enemy.collision();
+          }else{
+          if (enemy.x < player.x){
+            player.x -= 150;
+          }
+          if (enemy.x > player.x){
+            player.x += 150;
+          }
         }
-        if (enemigo.x > scene.player.x) {
-          enemigo.x += 40;
-        }
-      })
-    }
-  }
+      }
 
   getPowerUp() {
     this.powerUp.destroy();
@@ -109,34 +110,7 @@ export default class Level1 extends Phaser.Scene {
     this.scene.start('Level2');
   }
 
-
-
-  enemyMovement() {
-    const scene = this; // Guardar la referencia al contexto de la escena
-
-    this.enemies.children.iterate(function (child) {
-      child.body.allowGravity = false;
-      if (scene.player.x < child.x) {
-        child.flipX = false;
-        child.body.setVelocityX(-150);
-      } else if (scene.player.x == child.x) {
-        child.body.setVelocityX(0);
-      }
-      else {
-        child.flipX = true;
-        child.body.setVelocityX(150);
-      }
-      if (!child.anims.isPlaying) {
-        child.anims.play('enemy1-walk');
-      }
-    });
-  }
-
   setuplevel() {
-
-    if(window.innerWidth < 1000){
-      this.cameras.main.zoom = 0.6;
-    }
 
     //crear plataformas
     this.platforms = this.physics.add.staticGroup();
@@ -147,21 +121,6 @@ export default class Level1 extends Phaser.Scene {
       //habilitar fisicas
       this.physics.add.existing(platform, true);
       this.platforms.add(platform);
-    });
-
-    //jugador
-
-
-
-    //enemigos
-    this.enemies = this.physics.add.group();
-    this.levelData.enemies.forEach((item) => {
-      let enemy;
-      enemy = this.add.sprite(item.x, item.y, item.key).setOrigin(0, 0);
-
-      //agregar enemigos
-      this.enemies.add(enemy);
-
     });
 
     //powerUp
